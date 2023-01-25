@@ -1,0 +1,15 @@
+#logo {
+  width: 35%;
+}
+
+.product-img {
+  height: 400px;
+  width: 400px;
+}
+
+#flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
