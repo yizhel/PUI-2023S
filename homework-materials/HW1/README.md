@@ -1,8 +1,5 @@
 # HW1 Materials
 
-Find the materials for your homework here:
-* The mockups for all webpages for closer inspection, if needed. Reminder: you don't have to be pixel-accurate; the overall proportions should match.
-* The logo: download and use in your webpage design
-* The product photos: download them and use in your webpage design
+Deployed website https://yizhel.github.io/PUI-2023S/homework-materials/HW1/index.html
 
-Your page should be self-contained! Download the assets and push to your repository. Do not link to the assets in this repository.
+Repo link https://github.com/yizhel/PUI-2023S/tree/main/homework-materials/HW1
