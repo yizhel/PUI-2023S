@@ -1,6 +1,5 @@
 # HW2 Materials
 
-Find the materials for your homework here:
+Deployed website https://yizhel.github.io/PUI-2023S/homework-materials/HW2/index.html
 
-* The mockups for all webpages for closer inspection, if needed. Reminder: you don't have to be pixel-accurate; the overall proportions should match.
-* Use the other assets from your previous homework assignment
+Repo link https://github.com/yizhel/PUI-2023S/tree/main/homework-materials/HW2
