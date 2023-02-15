@@ -1,91 +1,99 @@
 let glazeOptions = [
   {
-    option: "Keep Original",
+    text: "Keep Original",
     price: 0,
   },
   {
-    option: "Sugar Milk",
+    text: "Sugar Milk",
     price: 0,
   },
   {
-    option: "Vanilla Milk",
+    text: "Vanilla Milk",
     price: 0.5,
   },
   {
-    option: "Double Chocolate",
+    text: "Double Chocolate",
     price: 1.5,
   },
 ];
 
 let packOptions = [
   {
-    option: "1",
+    text: "1",
     price: 1,
   },
   {
-    option: "3",
+    text: "3",
     price: 3,
   },
   {
-    option: "6",
+    text: "6",
     price: 5,
   },
   {
-    option: "12",
+    text: "12",
     price: 10,
   },
 ];
 
-// Code from lab 4
+// Base Code from lab 4
 
 // (basePrice + glazingPrice) * packPrice
 
-function displayCar(car) {
-  let carTitleElement = document.querySelector("#car-title");
-  let carInfoElement = document.querySelector("#car-info");
+const basePrice = 2.49;
+let glazeOption = 0;
+let packOption = 0;
 
-  carTitleElement.innerText = car.model;
-  carInfoElement.innerText = car.description;
+// populate selections in detail.html
+let selectGlaze = document.querySelector(".glazeSelect");
+let selectPack = document.querySelector(".packSelect");
+
+function makeGlazeOption(element, index) {
+  var option = document.createElement("option");
+  option.text = element.text;
+  option.value = index;
+  selectGlaze.add(option);
 }
 
-function onSelectValueChange() {
-  // In this function, `this` corresponds to the select
-  // element. So `this.value` will contain the value of the
-  // selected option as a string.
-  console.log("You selected " + this.value);
-
-  // We need to convert the string value to an integer
-  let carIndex = parseInt(this.value);
-
-  // Now retrieve the object at the index specified by the select's value
-  let carToDisplay = allCars[carIndex];
-
-  // Update the UI
-  displayCar(carToDisplay);
+function makePackOption(element, index) {
+  var option = document.createElement("option");
+  option.text = element.text;
+  option.value = index;
+  selectPack.add(option);
 }
 
-// When the page loads, find the select element.
-let selectElement = document.querySelector("#car-select");
+// uses object to make options for selection
+glazeOptions.forEach((element, index) => makeGlazeOption(element, index));
+packOptions.forEach((element, index) => makePackOption(element, index));
 
-// Let's add a new car to the allCars array.
-let newCar = {
-  model: "Honda Odyssey",
-  description: "A practical minivan for soccer moms and everyone else.",
-};
-allCars.push(newCar);
+selectGlaze.addEventListener("change", onSelectGlazeChange);
+selectPack.addEventListener("change", onSelectPackChange);
 
-// We also need to add this new car to the UI. To do that, create a new
-// 'option' HTML element, set its attributes, and add it to the select
-// element.
-var option = document.createElement("option");
-option.text = newCar.model;
-option.value = allCars.length - 1; // Its value should be the index of the last element in allCars
-selectElement.add(option);
+// Display default initially
+displayPrice(glazeOptions[0], packOptions[0]);
 
-// Give it a listener for the 'change' event, which is a function that will run
-// when the selected option changes. You could also do this by setting the
-// onchange property of selectElement, e.g. selectElement.onchange = ...
-selectElement.addEventListener("change", onSelectValueChange);
+// changes display price in detail.html
+function displayPrice(glaze, pack) {
+  let totalPrice = document.querySelector(".price");
+  let price = (basePrice + glaze.price) * pack.price;
+  price = price.toFixed(2);
+  totalPrice.innerText = "$" + price;
+}
 
-// Initially, display the first car
-displayCar(allCars[0]);
+// edits glaze value
+// uses global variable to track pack
+function onSelectGlazeChange() {
+  const glazeIndex = parseInt(this.value);
+  glazeOption = glazeIndex;
+  let glaze = glazeOptions[glazeIndex];
+  displayPrice(glaze, packOptions[packOption]);
+}
+
+// edits pack multiplier
+// uses global variable to track glaze
+function onSelectPackChange() {
+  const packIndex = parseInt(this.value);
+  packOption = packIndex;
+  let pack = packOptions[packIndex];
+  displayPrice(glazeOptions[glazeOption], pack);
+}

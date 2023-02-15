@@ -2,7 +2,7 @@
 
 <html>
   <head>
-    <title>PUI HW 2</title>
+    <title>PUI HW 3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" href="css/style.css" />
 
-    <script src="./js/detail.js" type="text/javascript"></script>
+    <script defer src="./js/detail.js" type="text/javascript"></script>
   </head>
 
   <body>
@@ -60,22 +60,12 @@
           Customize our delicious hand-made cinnamon roll to your liking!
         </p>
         <p class="optiontext">Glazing :</p>
-        <select class="dropdown">
-          <option value="orig">Keep Original</option>
-          <option value="sugar">Sugar Milk</option>
-          <option value="vanilla">Vanilla Milk</option>
-          <option value="choco">Double Chocolate</option>
-        </select>
+        <select class="dropdown glazeSelect"></select>
         <p class="optiontext">Pack Size :</p>
-        <select class="dropdown">
-          <option value="1">1</option>
-          <option value="3">3</option>
-          <option value="6">6</option>
-          <option value="12">12</option>
-        </select>
+        <select class="dropdown packSelect"></select>
 
         <div class="row">
-          <p class="price">$2.49</p>
+          <p class="price">$</p>
           <button class="addbutton">Add to Cart</button>
         </div>
       </div>
