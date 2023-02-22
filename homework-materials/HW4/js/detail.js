@@ -1,4 +1,21 @@
-let glazeOptions = [
+// Find url parameter for roll
+const queryString = window.location.search;
+const params = new URLSearchParams(queryString);
+const chosenRoll = params.get("roll");
+
+// Update title
+const headerElement = document.querySelector(".navtitle");
+headerElement.innerText = chosenRoll + " Cinnamon Roll";
+
+// Update the image
+const rollImage = document.querySelector(".detailimg");
+rollImage.src = "./assets/products/" + rolls[chosenRoll].imageFile;
+rollImage.alt = chosenRoll;
+
+// Update the price
+let basePrice = rolls[chosenRoll].basePrice;
+
+const glazeOptions = [
   {
     text: "Keep Original",
     price: 0,
@@ -8,16 +25,16 @@ let glazeOptions = [
     price: 0,
   },
   {
-    text: "Vanilla Milk",
+    text: "Vanilla Milk (+$0.50)",
     price: 0.5,
   },
   {
-    text: "Double Chocolate",
+    text: "Double Chocolate (+$1.50)",
     price: 1.5,
   },
 ];
 
-let packOptions = [
+const packOptions = [
   {
     text: "1",
     price: 1,
@@ -40,7 +57,6 @@ let packOptions = [
 
 // (basePrice + glazingPrice) * packPrice
 
-const basePrice = 2.49;
 let glazeOption = 0;
 let packOption = 0;
 
@@ -96,4 +112,31 @@ function onSelectPackChange() {
   packOption = packIndex;
   let pack = packOptions[packIndex];
   displayPrice(glazeOptions[glazeOption], pack);
+}
+
+class Roll {
+  constructor(rollType, rollGlazing, packSize, basePrice) {
+    this.type = rollType;
+    this.glazing = rollGlazing;
+    this.size = packSize;
+    this.basePrice = basePrice;
+  }
+}
+
+let cart = [];
+
+// add cart functionality
+// prints cart when
+let addButton = document.querySelector(".addbutton");
+addButton.addEventListener("click", addToCart);
+
+// print price in add cart
+function addToCart() {
+  const currRoll = chosenRoll;
+  const currGlaze = glazeOptions[glazeOption].text;
+  const currPack = packOptions[packOption].text;
+  const currBase = basePrice;
+  let cartItem = new Roll(currRoll, currGlaze, currPack, currBase);
+  cart.push(cartItem);
+  console.log(cart);
 }
