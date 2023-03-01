@@ -4,11 +4,11 @@ const params = new URLSearchParams(queryString);
 const chosenRoll = params.get("roll");
 
 // Update title
-const headerElement = document.querySelector(".navtitle");
+const headerElement = document.querySelector(".nav-title");
 headerElement.innerText = chosenRoll + " Cinnamon Roll";
 
 // Update the image
-const rollImage = document.querySelector(".detailimg");
+const rollImage = document.querySelector(".detail-img");
 rollImage.src = "./assets/products/" + rolls[chosenRoll].imageFile;
 rollImage.alt = chosenRoll;
 
@@ -23,8 +23,8 @@ let glazeOption = 0;
 let packOption = 0;
 
 // populate selections in detail.html
-let selectGlaze = document.querySelector(".glazeSelect");
-let selectPack = document.querySelector(".packSelect");
+let selectGlaze = document.querySelector(".glaze-select");
+let selectPack = document.querySelector(".pack-select");
 
 function makeGlazeOption(element, index) {
   var option = document.createElement("option");
@@ -78,7 +78,7 @@ function onSelectPackChange() {
 
 // add cart functionality
 // prints cart when
-let addButton = document.querySelector(".addbutton");
+let addButton = document.querySelector(".add-button");
 addButton.addEventListener("click", addToCart);
 
 // print price in add cart
