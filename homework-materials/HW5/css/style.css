@@ -176,7 +176,12 @@ a {
   justify-content: flex-start;
   align-items: flex-start;
 }
-
+.cart-card-box {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 25px;
+  width: 100%;
+}
 .cart-card {
   display: flex;
   padding-bottom: 25px;

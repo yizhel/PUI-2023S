@@ -63,6 +63,44 @@ const packOptions = [
   },
 ];
 
+const glazeOptionsSet = {
+  Original: {
+    text: "Keep Original",
+    price: 0,
+  },
+  "Sugar Milk": {
+    text: "Sugar Milk",
+    price: 0,
+  },
+  "Vanilla Milk": {
+    text: "Vanilla Milk (+$0.50)",
+    price: 0.5,
+  },
+  "Double Chocolate": {
+    text: "Double Chocolate (+$1.50)",
+    price: 1.5,
+  },
+};
+
+const packOptionsSet = {
+  1: {
+    text: "1",
+    price: 1,
+  },
+  3: {
+    text: "3",
+    price: 3,
+  },
+  6: {
+    text: "6",
+    price: 5,
+  },
+  12: {
+    text: "12",
+    price: 10,
+  },
+};
+
 class Roll {
   constructor(rollType, rollGlazing, packSize, basePrice) {
     this.type = rollType;
