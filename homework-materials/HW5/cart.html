@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>PUI HW 5 Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,100;1,200&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+
+    <div class="navheader">
+      <div class="logobox">
+        <a href="./index.html">
+          <img src="./assets/logo/logo-01.svg" alt="logo" id="logo" />
+        </a>
+      </div>
+
+      <div class="navbox">
+        <div class="navlinksbox">
+          <div class="navlink">
+            <a href="./index.html">PRODUCTS</a>
+          </div>
+          <div class="navlink highlight">
+            <a href="./cart.html">CART</a>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="navtitlebox">
+          <p class="navtitle">Shopping Cart</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="cartbox">
+      <div class="cartcard">
+        <div>
+          <img
+            src="./assets/products/original-cinnamon-roll.jpg"
+            alt="original"
+            class="cartimg"
+          />
+          <p class="cartremove">Remove</p>
+        </div>
+        <div class="carttextbox">
+          <p class="carttext">Original Cinnamon Roll</p>
+          <p class="carttext">Glazing : Keep Original</p>
+          <p class="carttext">Pack Size : 1</p>
+        </div>
+        <div class="cartpricebox">
+          <p class="cartprice">$2.49</p>
+        </div>
+      </div>
+
+      <div class="cartcard">
+        <div>
+          <img
+            src="./assets/products/double-chocolate-cinnamon-roll.jpg"
+            alt="chocolate"
+            class="cartimg"
+          />
+          <p class="cartremove">Remove</p>
+        </div>
+        <div class="carttextbox">
+          <p class="carttext">Double Chocolate Cinnamon Roll</p>
+          <p class="carttext">Glazing : Sugar milk</p>
+          <p class="carttext">Pack Size : 6</p>
+        </div>
+        <div class="cartpricebox">
+          <p class="cartprice">$27.45</p>
+        </div>
+      </div>
+
+      <div class="line"></div>
+      <div class="cartsummary">
+        <p class="carttotal summ">Total</p>
+        <div class="cartpricebox">
+          <p class="cartprice summ">$29.94</p>
+        </div>
+      </div>
+      <div class="cartbuttonbox">
+        <button class="cartbutton">Checkout</button>
+      </div>
+    </div>
+  </body>
+</html>
