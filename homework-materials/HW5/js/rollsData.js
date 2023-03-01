@@ -1,3 +1,5 @@
+cartID = 0;
+
 const rolls = {
   Original: {
     basePrice: 2.49,

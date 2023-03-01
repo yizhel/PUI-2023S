@@ -33,7 +33,8 @@ function addToCart(roll) {
     roll.packSize,
     roll.basePrice
   );
-  cart.push(cartItem);
+  cart.push([cartItem, cartID]);
+  cartID++;
 }
 Array.from(initCart).forEach((element) => {
   addToCart(element);
@@ -49,35 +50,56 @@ function calculatePrice(cartItem) {
 
 // makes html template out of each cart item
 function makeCartCard(cartItem) {
+  console.log(cartItem);
+
+  item = cartItem[0];
+  id = cartItem[1];
   let template = document.querySelector(".cart-card-temp");
   let clone = template.content.cloneNode(true);
 
   let img = clone.querySelector(".cart-img");
-  img.src = "./assets/products/" + rolls[cartItem.type].imageFile;
+  img.src = "./assets/products/" + rolls[item.type].imageFile;
   let rollType = clone.querySelector(".roll-type");
-  rollType.innerText = cartItem.type + " Cinnamon Roll";
+  rollType.innerText = item.type + " Cinnamon Roll";
   let rollGlaze = clone.querySelector(".roll-glaze");
-  rollGlaze.innerText = "Glazing : " + cartItem.glazing;
+  rollGlaze.innerText = "Glazing : " + item.glazing;
   let packSize = clone.querySelector(".pack-size");
-  packSize.innerText = "Pack Size : " + cartItem.size;
+  packSize.innerText = "Pack Size : " + item.size;
   let price = clone.querySelector(".cart-price");
-  price.innerText = "$" + calculatePrice(cartItem);
+  price.innerText = "$" + calculatePrice(item);
+  let removeButton = clone.querySelector(".cart-remove");
+  removeButton.setAttribute("id", id);
   return clone;
 }
 
-let cartBox = document.querySelector(".cart-card-box");
-Array.from(cart).forEach((element) => {
-  let card = document.createElement("div");
-  card.appendChild(makeCartCard(element));
-  card.classList.add("cart-card");
-  cartBox.appendChild(card);
-});
+function displayCart() {
+  let cartBox = document.querySelector(".cart-card-box");
+  while (cartBox.firstChild) {
+    cartBox.removeChild(cartBox.lastChild);
+  }
 
-let totalPrice = document.querySelector(".cart-price.summ");
-let total = 0;
-Array.from(cart).forEach((element) => {
-  total += Number(calculatePrice(element));
-  console.log(total);
-});
+  Array.from(cart).forEach((element) => {
+    let card = document.createElement("div");
+    card.appendChild(makeCartCard(element));
+    card.classList.add("cart-card");
+    cartBox.appendChild(card);
+  });
 
-totalPrice.innerText = "$" + total;
+  let totalPrice = document.querySelector(".cart-price.summ");
+  let total = 0;
+  Array.from(cart).forEach((element) => {
+    total += Number(calculatePrice(element[0]));
+  });
+
+  totalPrice.innerText = "$" + total;
+}
+
+displayCart();
+
+function removeItem(id) {
+  cartIndex = cart.findIndex((element) => element[1] === id);
+  console.log(cartIndex);
+  cart.splice(cartIndex, 1);
+  console.log(cart);
+  displayCart();
+}

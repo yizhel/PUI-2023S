@@ -88,6 +88,7 @@ function addToCart() {
   const currPack = packOptions[packOption].text;
   const currBase = basePrice;
   let cartItem = new Roll(currRoll, currGlaze, currPack, currBase);
-  cart.push(cartItem);
+  cart.push([cartItem, cartID]);
+  cartID++;
   console.log(cart);
 }
