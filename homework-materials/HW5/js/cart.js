@@ -35,6 +35,7 @@ function addToCart(roll) {
   );
   cart.push([cartItem, cartID]);
   cartID++;
+  displayCart();
 }
 Array.from(initCart).forEach((element) => {
   addToCart(element);
@@ -50,8 +51,6 @@ function calculatePrice(cartItem) {
 
 // makes html template out of each cart item
 function makeCartCard(cartItem) {
-  console.log(cartItem);
-
   item = cartItem[0];
   id = cartItem[1];
   let template = document.querySelector(".cart-card-temp");
@@ -67,11 +66,20 @@ function makeCartCard(cartItem) {
   packSize.innerText = "Pack Size : " + item.size;
   let price = clone.querySelector(".cart-price");
   price.innerText = "$" + calculatePrice(item);
+
+  // sets ids for remove buttons so we know which detail to remove
   let removeButton = clone.querySelector(".cart-remove");
   removeButton.setAttribute("id", id);
+  removeButton.addEventListener("click", function () {
+    console.log(removeButton.id);
+    console.log("removing" + removeButton.id);
+    removeItem(removeButton.id);
+  });
+
   return clone;
 }
 
+// deletes all nodes from cart-card-box and then reattaches existing nodes
 function displayCart() {
   let cartBox = document.querySelector(".cart-card-box");
   while (cartBox.firstChild) {
@@ -91,15 +99,14 @@ function displayCart() {
     total += Number(calculatePrice(element[0]));
   });
 
-  totalPrice.innerText = "$" + total;
+  totalPrice.innerText = "$" + total.toFixed(2);
 }
 
 displayCart();
 
+// finds element by id number, then splices from cart array
 function removeItem(id) {
-  cartIndex = cart.findIndex((element) => element[1] === id);
-  console.log(cartIndex);
+  cartIndex = cart.findIndex((element) => element[1] == id);
   cart.splice(cartIndex, 1);
-  console.log(cart);
   displayCart();
 }
