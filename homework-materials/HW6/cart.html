@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>PUI HW 6 Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,100;1,200&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script src="./js/rollsData.js" type="text/javascript"></script>
+
+    <script defer src="./js/cart.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+
+    <div class="nav-header">
+      <div class="logo-box">
+        <a href="./index.html">
+          <img src="./assets/logo/logo-01.svg" alt="logo" id="logo" />
+        </a>
+      </div>
+
+      <div class="nav-box">
+        <div class="nav-links-box">
+          <div class="nav-link">
+            <a href="./index.html">PRODUCTS</a>
+          </div>
+          <div class="nav-link highlight">
+            <a href="./cart.html">CART</a>
+          </div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="nav-title-box">
+          <p class="nav-title">Shopping Cart</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart -->
+    <div class="cart-box">
+      <div class="cart-card-box"></div>
+
+      <div class="line"></div>
+      <div class="cart-summary">
+        <p class="cart-total summ">Total</p>
+        <div class="cart-price-box">
+          <p class="cart-price summ"></p>
+        </div>
+      </div>
+      <div class="cart-button-box">
+        <button class="cart-button">Checkout</button>
+      </div>
+    </div>
+  </body>
+  <template class="cart-card-temp">
+    <div>
+      <img src="" alt="" class="cart-img" />
+      <button class="cart-remove">Remove</button>
+    </div>
+    <div class="cart-text-box">
+      <p class="cart-text roll-type">Double Chocolate Cinnamon Roll</p>
+      <p class="cart-text roll-glaze">Glazing : Sugar milk</p>
+      <p class="cart-text pack-size">Pack Size : 6</p>
+    </div>
+    <div class="cart-price-box">
+      <p class="cart-price"></p>
+    </div>
+  </template>
+</html>
