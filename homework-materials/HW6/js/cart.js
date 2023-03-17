@@ -116,6 +116,7 @@ function displayCart() {
   totalPrice.innerText = "$" + total.toFixed(2);
 }
 
+// display cart initially
 displayCart();
 
 // finds element by id number, then splices from cart array

@@ -31,18 +31,22 @@ const glazeOptions = [
   {
     text: "Keep Original",
     price: 0,
+    value: "Original",
   },
   {
     text: "Sugar Milk",
     price: 0,
+    value: "Sugar Milk",
   },
   {
     text: "Vanilla Milk (+$0.50)",
     price: 0.5,
+    value: "Vanilla Milk",
   },
   {
     text: "Double Chocolate (+$1.50)",
     price: 1.5,
+    value: "Double Chocolate",
   },
 ];
 

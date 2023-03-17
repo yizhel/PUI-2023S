@@ -85,9 +85,9 @@ addButton.addEventListener("click", addToCart);
 function addToCart() {
   cart = JSON.parse(localStorage.getItem("cart"));
   cartID = JSON.parse(localStorage.getItem("cartID"));
-
+  console.log(glazeOptions[glazeOption]);
   const currRoll = chosenRoll;
-  const currGlaze = glazeOptions[glazeOption].text;
+  const currGlaze = glazeOptions[glazeOption].value;
   const currPack = packOptions[packOption].text;
   const currBase = basePrice;
   let cartItem = new Roll(currRoll, currGlaze, currPack, currBase);
@@ -95,6 +95,7 @@ function addToCart() {
 
   cartID++;
   localStorage.setItem("cart", JSON.stringify(cart));
+  console.log("Item added, this is the new cart");
   console.log(JSON.parse(localStorage.getItem("cart")));
   localStorage.setItem("cartID", cartID);
 }
