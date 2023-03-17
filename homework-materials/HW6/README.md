@@ -1,4 +1,4 @@
-# HW5 Materials
+# HW6 Materials
 
 Deployed website https://yizhel.github.io/PUI-2023S/homework-materials/HW6/index.html
 
