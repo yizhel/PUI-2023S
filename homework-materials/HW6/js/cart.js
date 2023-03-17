@@ -27,6 +27,9 @@ let initCart = [
 ];
 
 function addToCart(roll) {
+  cart = JSON.parse(localStorage.getItem("cart"));
+  cartID = localStorage.getItem("cartID");
+
   let cartItem = new Roll(
     roll.rollType,
     roll.rollGlazing,
@@ -34,14 +37,27 @@ function addToCart(roll) {
     roll.basePrice
   );
   cart.push([cartItem, cartID]);
+  localStorage.setItem("cart", JSON.stringify(cart));
   cartID++;
+  localStorage.setItem("cartID", cartID);
+
   displayCart();
 }
-Array.from(initCart).forEach((element) => {
-  addToCart(element);
-});
 
+// initialize cart once until localstorage is cleared
+if (JSON.parse(localStorage.getItem("cart")).length == 0) {
+  if (localStorage.getItem("init") === null) {
+    Array.from(initCart).forEach((element) => {
+      addToCart(element);
+      console.log("added element");
+    });
+    localStorage.setItem("init", true);
+  }
+}
+
+// calculates price for
 function calculatePrice(cartItem) {
+  console.log(glazeOptionsSet[cartItem.glazing]);
   let priceCalc =
     (cartItem.basePrice + glazeOptionsSet[cartItem.glazing].price) *
     packOptionsSet[cartItem.size].price;
@@ -51,6 +67,7 @@ function calculatePrice(cartItem) {
 
 // makes html template out of each cart item
 function makeCartCard(cartItem) {
+  console.log(cartItem);
   item = cartItem[0];
   id = cartItem[1];
   let template = document.querySelector(".cart-card-temp");
@@ -71,8 +88,6 @@ function makeCartCard(cartItem) {
   let removeButton = clone.querySelector(".cart-remove");
   removeButton.setAttribute("id", id);
   removeButton.addEventListener("click", function () {
-    console.log(removeButton.id);
-    console.log("removing" + removeButton.id);
     removeItem(removeButton.id);
   });
 
@@ -81,6 +96,7 @@ function makeCartCard(cartItem) {
 
 // deletes all nodes from cart-card-box and then reattaches existing nodes
 function displayCart() {
+  cart = JSON.parse(localStorage.getItem("cart"));
   let cartBox = document.querySelector(".cart-card-box");
   while (cartBox.firstChild) {
     cartBox.removeChild(cartBox.lastChild);
@@ -106,7 +122,9 @@ displayCart();
 
 // finds element by id number, then splices from cart array
 function removeItem(id) {
+  cart = JSON.parse(localStorage.getItem("cart"));
   cartIndex = cart.findIndex((element) => element[1] == id);
   cart.splice(cartIndex, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
   displayCart();
 }

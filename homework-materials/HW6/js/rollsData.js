@@ -112,4 +112,11 @@ class Roll {
   }
 }
 
-let cart = [];
+//Initialize the cart, but only once per session
+if (localStorage.getItem("cart") === null) {
+  console.log("Init new cart");
+  let cart = [];
+  localStorage.setItem("cart", JSON.stringify(cart));
+  let cartID = 0;
+  localStorage.setItem("cartID", cartID);
+}
