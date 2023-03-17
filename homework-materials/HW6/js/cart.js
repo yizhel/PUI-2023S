@@ -57,7 +57,6 @@ if (JSON.parse(localStorage.getItem("cart")).length == 0) {
 
 // calculates price for
 function calculatePrice(cartItem) {
-  console.log(glazeOptionsSet[cartItem.glazing]);
   let priceCalc =
     (cartItem.basePrice + glazeOptionsSet[cartItem.glazing].price) *
     packOptionsSet[cartItem.size].price;
@@ -67,7 +66,6 @@ function calculatePrice(cartItem) {
 
 // makes html template out of each cart item
 function makeCartCard(cartItem) {
-  console.log(cartItem);
   item = cartItem[0];
   id = cartItem[1];
   let template = document.querySelector(".cart-card-temp");
@@ -127,4 +125,6 @@ function removeItem(id) {
   cart.splice(cartIndex, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
   displayCart();
+  console.log("Item removed, this is the new cart");
+  console.log(JSON.parse(localStorage.getItem("cart")));
 }
